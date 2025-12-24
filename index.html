@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnificent Technology Hub</title>
+
+<style>
+/* ================== GENERAL STYLES ================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+body{
+  background:#f8fafc;
+  color:#020617;
+}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:16px 50px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#ffffff;
+  border-bottom:1px solid #e5e7eb;
+  z-index:1000;
+}
+.logo img{
+  height:45px;
+}
+nav{
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+nav a{
+  text-decoration:none;
+  color:#020617;
+  font-weight:500;
+  position:relative;
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#22c55e;
+  transition:0.3s;
+}
+nav a:hover::after{
+  width:100%;
+}
+.nav-cta{
+  padding:10px 22px;
+  background:#22c55e;
+  color:#052e16;
+  border-radius:25px;
+  font-weight:600;
+}
+.menu-btn{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+.menu-btn span{
+  width:26px;
+  height:2px;
+  background:#020617;
+}
+.mobile-menu{
+  position:absolute;
+  top:100%;
+  right:25px;
+  background:#ffffff;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  padding:15px 20px;
+  display:none;
+  flex-direction:column;
+  gap:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+.mobile-menu a{
+  color:#020617;
+  text-decoration:none;
+  font-size:1rem;
+}
+.mobile-menu.active{
+  display:flex;
+}
+
+/* ================= HERO SLIDER ================= */
+.hero-slider{
+  margin-top:90px;
+  height:520px;
+  position:relative;
+  overflow:hidden;
+}
+.slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s ease;
+  display:flex;
+  align-items:center;
+  padding:0 50px;
+}
+.slide.active{
+  opacity:1;
+  z-index:1;
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(2,6,23,0.65), rgba(2,6,23,0.65));
+}
+.slide-content{
+  position:relative;
+  max-width:650px;
+  z-index:2;
+  color:#ffffff;
+}
+.slide-content h1{
+  font-size:2.6rem;
+  line-height:1.2;
+  margin-bottom:15px;
+}
+.slide-content p{
+  font-size:1.05rem;
+  margin-bottom:30px;
+}
+.hero-buttons a{
+  padding:12px 28px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:600;
+  margin-right:15px;
+}
+.primary-btn{
+  background:#22c55e;
+  color:#052e16;
+}
+.secondary-btn{
+  border:2px solid #22c55e;
+  color:#ffffff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  nav{display:none;}
+  .menu-btn{display:flex;}
+  header{padding:16px 25px;}
+  .hero-slider{height:460px;}
+  .slide{padding:0 25px;}
+  .slide-content h1{font-size:2.1rem;}
+}
+
+/* ================= MISSION & VISION SLIDER ================= */
+.mv-section{
+  background:#f8fafc;
+  padding:70px 20px;
+  overflow:hidden;
+}
+.mv-wrapper{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  gap:30px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+.mv-wrapper::-webkit-scrollbar{
+  display:none;
+}
+.mv-card{
+  min-width:100%;
+  background:#ffffff;
+  padding:50px;
+  border-radius:16px;
+  scroll-snap-align:start;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+.mv-tag{
+  display:inline-block;
+  padding:6px 16px;
+  background:#eafaf1;
+  color:#22c55e;
+  font-size:0.85rem;
+  font-weight:600;
+  border-radius:20px;
+  margin-bottom:15px;
+}
+.mv-card h3{
+  font-size:2rem;
+  margin-bottom:15px;
+  color:#020617;
+}
+.mv-card p{
+  font-size:1.05rem;
+  line-height:1.8;
+  color:#475569;
+}
+@media(max-width:768px){
+  .mv-card{
+    padding:35px 25px;
+  }
+  .mv-card h3{
+    font-size:1.7rem;
+  }
+}
+.mv-image{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:25px;
+}
+
+/* ================= ABOUT BIG ================= */
+.about-big{
+  padding:110px 20px;
+  background:#ffffff;
+}
+.about-big-wrapper{
+  max-width:900px;
+  margin:auto;
+}
+.about-big-wrapper .section-tag{
+  display:inline-block;
+  padding:6px 16px;
+  background:#eafaf1;
+  color:#22c55e;
+  font-size:0.85rem;
+  font-weight:600;
+  border-radius:20px;
+  margin-bottom:20px;
+  text-align:center;
+}
+.about-big-wrapper h2{
+  font-size:2.8rem;
+  margin:20px 0 30px;
+  color:#020617;
+  line-height:1.25;
+  text-align:center;
+}
+.about-lead{
+  font-size:1.25rem;
+  font-weight:500;
+  color:#334155;
+  margin-bottom:30px;
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:auto;
+}
+.about-big-wrapper p{
+  font-size:1.1rem;
+  line-height:1.9;
+  color:#475569;
+  margin-bottom:22px;
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:auto;
+}
+.about-big-image{
+  margin-top:50px;
+  text-align:center;
+}
+.about-big-image img{
+  width:100%;
+  border-radius:20px;
+  object-fit:cover;
+}
+@media(max-width:768px){
+  .about-big-wrapper h2{font-size:2.1rem;}
+  .about-lead{font-size:1.15rem;}
+  .about-big-wrapper p,.about-lead{text-align:left;}
+}
+
+/* ================= CORE VALUES ================= */
+.values-section{
+  padding:100px 20px;
+  background:#f8fafc;
+}
+.values-wrapper{
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+}
+.values-title{
+  font-size:2.6rem;
+  margin-bottom:60px;
+  color:#020617;
+}
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:40px;
+}
+.value-card{
+  background:#ffffff;
+  padding:40px 25px;
+  border-radius:18px;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+.value-icon{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  margin-bottom:25px;
+}
+.value-card h3{
+  font-size:1.4rem;
+  margin-bottom:15px;
+  color:#020617;
+}
+.value-card p{
+  font-size:1rem;
+  line-height:1.7;
+  color:#475569;
+}
+@media(max-width:900px){.values-grid{grid-template-columns:repeat(2, 1fr);}}
+@media(max-width:500px){.values-grid{grid-template-columns:1fr;}.values-title{font-size:2.1rem;}}
+
+/* ================= SERVICES ================= */
+.services-section{
+  padding:110px 20px;
+  background:#ffffff;
+}
+.services-wrapper{
+  max-width:1150px;
+  margin:auto;
+  text-align:center;
+}
+.services-wrapper h2{
+  font-size:2.6rem;
+  margin:25px 0 60px;
+  color:#020617;
+}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:35px;
+}
+.service-card{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.6s ease;
+  min-width:280px;
+  background:#f8fafc;
+  border-radius:16px;
+  overflow:hidden;
+}
+.service-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.service-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.service-card h3{
+  font-size:1.35rem;
+  margin:25px 20px 15px;
+  color:#020617;
+}
+.service-card p{
+  font-size:1rem;
+  line-height:1.7;
+  color:#475569;
+  margin:0 20px 30px;
+}
+
+/* ================= FIXED ENQUIRY BUTTON ================= */
+.fixed-enquiry-btn{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#22c55e;
+  color:#052e16;
+  padding:14px 24px;
+  border-radius:40px;
+  font-size:0.95rem;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  z-index:9999;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fixed-enquiry-btn:hover{
+  transform:translateX(-50%) translateY(-2px);
+  box-shadow:0 14px 40px rgba(0,0,0,0.25);
+}
+@media(max-width:600px){
+  .fixed-enquiry-btn{
+    width:90%;
+    text-align:center;
+    font-size:0.9rem;
+  }
+}
+/* ===== STATS & IMPACT ===== */
+.stats-section{
+  padding:80px 20px;
+  background:#f8fafc;
+}
+
+.stats-grid{
+  max-width:1000px;
+  margin:50px auto 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+  text-align:center;
+}
+
+.stat-box{
+  background:#ffffff;
+  padding:40px 20px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+
+.stat-box h3{
+  font-size:2.5rem;
+  font-weight:800;
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+.stat-box p{
+  font-size:1rem;
+  color:#475569;
+  font-weight:500;
+}
+
+/* RESPONSIVE STATS */
+@media(max-width:900px){
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:500px){
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ===== SERVICE CARDS ANIMATION ===== */
+.service-card{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.6s ease;
+}
+
+.service-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== PRODUCTS SECTION BUTTON ===== */
+.order-btn{
+  display:inline-block;
+  background:#22c55e;
+  color:#052e16;
+  padding:8px 16px;
+  border-radius:25px;
+  font-size:0.9rem;
+  font-weight:600;
+  text-decoration:none;
+  margin-top:12px;
+  transition:all 0.2s ease;
+}
+
+.order-btn:hover{
+  background:#16a34a;
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section{
+  padding:100px 20px;
+  background:#f8fafc;
+}
+
+.projects-wrapper{
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
+}
+
+.projects-wrapper h2{
+  font-size:2.5rem;
+  margin:15px 0;
+  color:#020617;
+}
+
+.projects-intro{
+  max-width:800px;
+  margin:0 auto 50px;
+  color:#475569;
+  font-size:1rem;
+}
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:30px;
+}
+
+.project-card{
+  background:#ffffff;
+  border-radius:16px;
+  overflow:hidden;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.project-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.project-card h3{
+  font-size:1.3rem;
+  margin:18px 15px 10px;
+  color:#020617;
+}
+
+.project-card p{
+  margin:0 15px 20px;
+  font-size:0.95rem;
+  color:#475569;
+}
+
+/* RESPONSIVE PROJECTS */
+@media(max-width:600px){
+  .projects-wrapper h2{
+    font-size:2.1rem;
+  }
+}
+
+/* ===== FIXED ENQUIRY BUTTON ===== */
+.fixed-enquiry-btn{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#22c55e;
+  color:#052e16;
+  padding:14px 24px;
+  border-radius:40px;
+  font-size:0.95rem;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  z-index:9999;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fixed-enquiry-btn:hover{
+  transform:translateX(-50%) translateY(-2px);
+  box-shadow:0 14px 40px rgba(0,0,0,0.25);
+}
+
+/* RESPONSIVE FIXED BUTTON */
+@media(max-width:600px){
+  .fixed-enquiry-btn{
+    width:90%;
+    text-align:center;
+    font-size:0.9rem;
+  }
+}
+/* ===== FLOATING WHATSAPP BUTTON ===== */
+.floating-whatsapp-btn{
+  position:fixed;
+  bottom:90px; /* Slightly above the enquiry button */
+  right:20px;
+  width:60px;
+  height:60px;
+  background:#25d366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  z-index:9999;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-whatsapp-btn img{
+  width:35px;
+  height:35px;
+}
+
+.floating-whatsapp-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 40px rgba(0,0,0,0.25);
+}
+
+/* MOBILE ADJUSTMENT */
+@media(max-width:600px){
+  .floating-whatsapp-btn{
+    width:50px;
+    height:50px;
+  }
+  .floating-whatsapp-btn img{
+    width:28px;
+    height:28px;
+  }
+}
+/* ===== CONTACT SECTION WITH ICONS ===== */
+.contact-section{
+  padding:80px 20px;
+  background:#ffffff;
+}
+
+.contact-wrapper{
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
+}
+
+.contact-content{
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+/* Contact Form */
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  font-size:1rem;
+}
+
+.btn-contact{
+  background:#22c55e;
+  color:#052e16;
+  padding:12px 28px;
+  font-weight:600;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+.btn-contact:hover{
+  background:#16a34a;
+}
+
+/* Contact Image and Info */
+.contact-image{
+  text-align:center;
+  flex:1;
+}
+
+.contact-image img{
+  max-width:100%;
+  border-radius:16px;
+  margin-bottom:20px;
+}
+
+.contact-info{
+  font-size:1rem;
+  color:#475569;
+  line-height:2;
+  text-align:center;
+}
+
+.contact-info div{
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+/* Icon Styling */
+.contact-info svg{
+  color:#22c55e;
+  flex-shrink:0;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .contact-content{
+    flex-direction:column;
+  }
+
+  .contact-image{
+    margin-top:30px;
+  }
+}
+/* ===== FOOTER ===== */
+.site-footer{
+  background:#020617;
+  color:#ffffff;
+  padding:60px 20px 20px;
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+
+.footer-wrapper{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:40px;
+}
+
+/* Logo & Description */
+.footer-logo img{
+  height:50px;
+  margin-bottom:15px;
+}
+
+.footer-logo p{
+  font-size:0.95rem;
+  color:#cbd5e1;
+  line-height:1.6;
+  max-width:280px;
+}
+
+/* Quick Links */
+.footer-links h3,
+.footer-contact h3{
+  font-size:1.2rem;
+  margin-bottom:15px;
+  color:#22c55e;
+}
+
+.footer-links a{
+  display:block;
+  color:#cbd5e1;
+  text-decoration:none;
+  margin-bottom:10px;
+  font-size:0.95rem;
+}
+
+.footer-links a:hover{
+  color:#22c55e;
+}
+
+/* Contact Info */
+.footer-contact p{
+  font-size:0.95rem;
+  margin-bottom:10px;
+  color:#cbd5e1;
+}
+
+.footer-socials{
+  margin-top:12px;
+}
+
+.footer-socials a{
+  margin-right:12px;
+  display:inline-block;
+}
+
+.footer-socials img{
+  filter: brightness(0) invert(1); /* make icons white */
+  transition:0.3s;
+}
+
+.footer-socials img:hover{
+  filter: brightness(0) invert(0.6) sepia(1) hue-rotate(90deg);
+}
+
+/* Bottom Bar */
+.footer-bottom{
+  border-top:1px solid #334155;
+  text-align:center;
+  padding:15px 0;
+  margin-top:30px;
+  font-size:0.9rem;
+  color:#94a3b8;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .footer-wrapper{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .footer-links,
+  .footer-contact{
+    margin-top:25px;
+  }
+
+  .footer-logo p{
+    max-width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo1234.png" alt="Magnificent Tech Hub">
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Services</a>
+    <a href="#">Products</a>
+    <a href="#">Projects</a>
+    <a href="#" class="nav-cta">Contact Us</a>
+  </nav>
+
+  <div class="menu-btn" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#service">Services</a>
+    <a href="#products">Products</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact Us</a>
+  </div>
+</header>
+
+<!-- ================= HERO SLIDER ================= -->
+<section class="hero-slider">
+  <div class="slide active" style="background-image:url('solar1.jpg')">
+    <div class="overlay"></div>
+    <div class="slide-content">
+      <h1>Reliable, Affordable Solar Power Solutions</h1>
+      <p>Clean energy solutions designed for homes and businesses. Power that works for you — every day.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="primary-btn">Get a Quote</a>
+        <a href="#service" class="secondary-btn">View Services</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('solar2.jpg')">
+    <div class="overlay"></div>
+    <div class="slide-content">
+      <h1>Smart Energy Systems Built for the Future</h1>
+      <p>Sustainable power solutions engineered with modern technology to reduce cost and increase efficiency.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="primary-btn">Our Projects</a>
+        <a href="#contact" class="secondary-btn">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about-big" id="about">
+  <div class="about-big-wrapper">
+    <span class="section-tag">About Us</span>
+    <h2>Empowering Homes and Businesses with Reliable Solar Energy Solutions</h2>
+    <div class="about-big-image"><img src="about.jpg" alt="Solar Energy Installation"></div>
+    <p class="about-lead">Magnificent Technology Hub is a renewable energy and technology company focused on delivering efficient, affordable, and sustainable solar power solutions tailored to homes and businesses across Nigeria.</p>
+    <p>We specialize in the design, installation, and maintenance of modern solar energy systems that provide consistent power, reduce electricity costs, and support a cleaner environment. Our approach combines technical expertise, quality equipment, and customer-focused service to ensure long-term energy reliability.</p>
+    <p>At Magnificent Technology Hub, we believe energy should be dependable, accessible, and future-ready. That’s why we are committed to helping individuals and organizations transition to clean power with confidence.</p>
+  </div>
+</section>
+
+<!-- ================= MISSION & VISION ================= -->
+<section class="mv-section">
+  <div class="mv-wrapper" id="mvWrapper">
+    <div class="mv-card">
+      <img src="mission.jpg" alt="Our Mission" class="mv-image">
+      <span class="mv-tag">Our Mission</span>
+      <h3>Deliver Reliable & Affordable Clean Energy</h3>
+      <p>Our mission is to provide innovative, cost-effective, and sustainable solar energy solutions that empower homes, businesses, and communities with dependable power while reducing environmental impact.</p>
+    </div>
+    <div class="mv-card">
+      <img src="vision.jpg" alt="Our Vision" class="mv-image">
+      <span class="mv-tag">Our Vision</span>
+      <h3>Building a Sustainable Energy-Powered Future</h3>
+      <p>We envision a future where clean and renewable energy is accessible to everyone thus driving economic growth, energy independence, and a healthier planet for generations to come.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CORE VALUES ================= -->
+<section class="values-section">
+  <div class="values-wrapper">
+    <h2 class="values-title">Why Choose Us</h2>
+    <div class="values-grid">
+      <div class="value-card"><img src="104.png" alt="Indigenous" class="value-icon"><h3>Indigenous</h3><p>Driven by local energy needs and community empowerment.</p></div>
+      <div class="value-card"><img src="106.png" alt="Reliable" class="value-icon"><h3>Reliable</h3><p>High-quality systems with warranties and dependable performance.</p></div>
+      <div class="value-card"><img src="105.png" alt="Sustainable" class="value-icon"><h3>Sustainable</h3><p>Environmentally friendly solutions that minimize carbon footprint.</p></div>
+      <div class="value-card"><img src="107.png" alt="Affordable" class="value-icon"><h3>Affordable</h3><p>Competitive pricing and flexible financing options.</p></div>
+    </div>
+  </div>
+</section>
+<!-- ================= SERVICES ================= -->
+<section class="services-section" id="service">
+  <div class="services-wrapper">
+    <span class="section-tag">Our <b>Services</b></span>
+    <h2>Smart Energy Solutions Built for You</h2>
+
+    <div class="services-slider">
+      <div class="services-track">
+
+        <div class="service-card">
+          <img src="8.jpg">
+          <h3>Solar System Installation</h3>
+          <p>Professional installation of solar power systems.</p>
+        </div>
+
+        <div class="service-card">
+          <img src="1.png">
+          <h3>Inverter & Battery Systems</h3>
+          <p>Reliable inverter and battery solutions.</p>
+        </div>
+
+        <div class="service-card">
+          <img src="support.jpg">
+          <h3>Maintenance & Support</h3>
+          <p>Routine maintenance and technical support.</p>
+        </div>
+
+        <div class="service-card">
+          <img src="consult.jpg">
+          <h3>Energy Consultation</h3>
+          <p>Expert energy assessment and consultation.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="products-section" id="products">
+  <div class="products-wrapper">
+    <h2 id="featuredTitle" style="text-align:center; font-weight:800; font-size:2.5rem; color:#020617; transition:color 0.6s ease;">Featured Products</h2>
+    <script>
+      const colors = ["#22c55e", "#16a34a", "#0ea5e9", "#020617"];
+      let index = 0;
+      setInterval(() => {
+        document.getElementById("featuredTitle").style.color = colors[index];
+        index = (index + 1) % colors.length;
+      }, 1200);
+    </script>
+    <br>
+
+    <h2 style="text-align:center">WHAT WE SELL</h2>
+    <br>
+    
+
+    <div class="products-grid">
+      <div class="product-card">
+     
+        <h3 style="text-align:center;">SUNPOD Solar Power Station:</h3>
+        <p style="font-size:2rem">A compact and affordable solar power solution designed for rural and urban communities. It is portable, easy to install, and delivers consistent energy for homes and small businesses.</p>
+        <br>
+        <a href="tel:+2347080339869" class="order-btn" style="font-size:1rem">Make an Order</a>
+      </div>
+
+      <div class="product-card">
+          <br>
+  
+        <h3 style="text-align:center;">Solar Panels and Batteries:</h3>
+        <br>
+        <p style="font-size:2rem"> High-quality solar panels and long-lasting batteries that ensure optimal energy production and storage.</p>
+        <br>
+        <a href="tel:+2347080339869" class="order-btn" style="font-size:1rem">Make an Order</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS & IMPACT ================= -->
+<section class="stats-section">
+  <h2 style="text-align:center; font-weight:800;">Our Impact in Numbers</h2>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <h3 class="counter" data-number="150">0</h3>
+      <p>Solar Installations</p>
+    </div>
+    <div class="stat-box">
+      <h3 class="counter" data-number="120">0</h3>
+      <p>Happy Clients</p>
+    </div>
+    <div class="stat-box">
+      <h3 class="counter" data-number="25">0</h3>
+      <p>Communities Powered</p>
+    </div>
+    <div class="stat-box">
+      <h3 class="counter" data-number="5">0</h3>
+      <p>Years Experience</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="projects-section" id="projects">
+  <div class="projects-wrapper">
+    <span class="section-tag">Our <b>Projects</b></span>
+    <h2>Recent Successful Projects</h2>
+    <p class="projects-intro">Don’t just take our words, let our results speak for themselves. Here are some of the solar installations and energy solutions we’ve successfully delivered.</p>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="product1.jpg" alt="Solar Home Installation">
+        <h3>Residential Solar Installation</h3>
+        <p>Our residential solar installation project is designed to give homeowners consistent power, lower electricity bills, and long-term peace of mind. By harnessing the power of the sun, we help you reduce dependence on unstable power supply while enjoying clean, eco-friendly energy every day.</p>
+      </div>
+      <div class="project-card">
+        <img src="project2.jpg" alt="Business Solar Power Project">
+        <h3>Small Business Solar Setup</h3>
+        <p>Our small business solar setup is built to keep your operations running without interruption while reducing high electricity and fuel costs. With solar power, your business enjoys stable energy, predictable expenses, and improved productivity every day.</p>
+      </div>
+      <div class="project-card">
+        <img src="project3.jpg" alt="Community Solar System">
+        <h3>Community Solar Solution</h3>
+        <p>Our community solar solution provides reliable, affordable electricity by allowing multiple households or businesses to benefit from a shared solar system. This approach reduces energy costs, improves power stability, and ensures access to clean energy for everyone.</p>
+      </div>
+      <div class="project-card">
+        <img src="project4.jpg" alt="Industrial Solar Project">
+        <h3>Industrial Solar Installation</h3>
+        <p>Our industrial solar installation solutions are designed to meet the heavy energy demands of factories, warehouses, and large facilities. By integrating high-capacity solar systems, we help businesses achieve reliable power, reduce operational costs, and maintain uninterrupted production.</p>
+      </div>
+    </div>
+  </div>
+  <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+<a href="https://wa.me/2347080339869" 
+   target="_blank" 
+   class="floating-whatsapp-btn" 
+   title="Chat with us on WhatsApp">
+   <img src="What4.jpg" alt="WhatsApp" />
+</a>
+</section>
+
+<!-- ================= FIXED ENQUIRY BUTTON ================= -->
+<section class="contact-section" id="contact">
+  <div class="contact-wrapper">
+
+    <h2 style="text-align:center; font-size:2.4rem; font-weight:700; margin-bottom:16px;">
+      Get in Touch
+    </h2>
+    <p style="text-align:center; color:#475569; margin-bottom:32px;">
+      Have a question or want to make an enquiry? Fill the form below or contact us directly.
+    </p>
+
+    <div class="contact-content">
+
+      <!-- FORM -->
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="Your Name*" required>
+        <input type="email" name="email" placeholder="Your Email*" required>
+        <input type="tel" name="phone" placeholder="Phone Number*" required>
+        <textarea name="message" rows="5" placeholder="Your Message*" required></textarea>
+        <button type="submit" class="btn-contact">Send Message</button>
+      </form>
+
+      <!-- CONTACT IMAGE & INFO -->
+      <div class="contact-image">
+        <img src="map.jpg" alt="Our Office or Location">
+
+        <div class="contact-info">
+          <div>
+            <svg width="20" height="20" fill="currentColor" style="margin-right:8px;">
+              <path d="M2 2h16v16H2z" fill="none"/><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.48 2.53.74 3.88.74a1 1 0 011 1V19a1 1 0 01-1 1C9.16 20 2 12.84 2 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.26 2.67.74 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+            </svg>
+            +234 708 033 9869
+          </div>
+
+          <div>
+            <svg width="20" height="20" fill="currentColor" style="margin-right:8px;">
+              <path d="M2 2h16v16H2z" fill="none"/><path d="M19 3a2 2 0 00-2-2H3a2 2 0 00-2 2v14l4-4h12a2 2 0 002-2V3z"/>
+            </svg>
+            WhatsApp: +234 708 033 9869
+          </div>
+
+          <div>
+            <svg width="20" height="20" fill="currentColor" style="margin-right:8px;">
+              <path d="M2 2h16v16H2z" fill="none"/><path d="M4 4h12v12H4z"/>
+            </svg>
+            info@magnificenttechhub.com.ng
+          </div>
+
+          <div>
+            <svg width="20" height="20" fill="currentColor" style="margin-right:8px;">
+              <path d="M2 2h16v16H2z" fill="none"/><path d="M12 2C8 2 5 5 5 9c0 4.5 7 11 7 11s7-6.5 7-11c0-4-3-7-7-7zm0 9a2 2 0 110-4 2 2 0 010 4z"/>
+            </svg>
+            Nigeria
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-wrapper">
+
+    <!-- Logo & Description -->
+    <div class="footer-logo">
+      <img src="logo1234.png" alt="Magnificent Tech Hub">
+      <p>
+        Empowering homes and businesses with reliable, affordable, and sustainable solar energy solutions across Nigeria.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <a href="#">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#service">Services</a>
+      <a href="#products">Products</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>Phone: +234 708 033 9869</p>
+      <p>Email: info@magnificenttechhub.com.ng</p>
+      <p>Address: Nigeria</p>
+
+      <!-- Optional Social Icons -->
+      
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>© 2025 Magnificent Technology Hub. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ================= SCRIPTS ================= -->
+<script>
+/* ===== MENU TOGGLE ===== */
+function toggleMenu(){
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileMenu.classList.toggle('active');
+}
+
+/* ===== HERO SLIDER ===== */
+const slides = document.querySelectorAll('.hero-slider .slide');
+let slideIndex = 0;
+function showSlides(){
+  slides.forEach(slide => slide.classList.remove('active'));
+  slideIndex = (slideIndex + 1) % slides.length;
+  slides[slideIndex].classList.add('active');
+}
+setInterval(showSlides, 5000);
+
+/* ===== MISSION & VISION SLIDER AUTO-SCROLL ===== */
+const mvWrapper = document.getElementById('mvWrapper');
+let mvIndex = 0;
+setInterval(() => {
+  mvIndex = (mvIndex === 0 ? 1 : 0);
+  if(mvWrapper) mvWrapper.scrollTo({left: mvIndex * mvWrapper.clientWidth, behavior:'smooth'});
+}, 5000);
+
+/* ===== STATS COUNTER ===== */
+const counters = document.querySelectorAll('.counter');
+let counterStarted = false;
+function runCounter(){
+  if(counterStarted) return;
+  counterStarted = true;
+  counters.forEach(counter => {
+    const target = Number(counter.dataset.number);
+    let count = 0;
+    const update = () => {
+      count += target/120;
+      if(count < target){
+        counter.innerText = Math.ceil(count);
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    update();
+  });
+}
+window.addEventListener('scroll', () => {
+  const section = document.querySelector('.stats-section');
+  if(!section) return;
+  const sectionTop = section.getBoundingClientRect().top;
+  if(sectionTop < window.innerHeight - 120){
+    runCounter();
+  }
+});
+
+/* ===== SHOW SERVICES ON SCROLL ===== */
+const serviceCards = document.querySelectorAll('.service-card');
+function showServices(){
+  serviceCards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 50){
+      card.classList.add('show');
+    }
+  });
+}
+window.addEventListener('scroll', showServices);
+window.addEventListener('load', showServices);
+</script>
+
+</body>
+</html>
